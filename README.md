@@ -47,3 +47,11 @@ La documentación solicitada se encuentra dentro de la carpeta /DOCS
 
 3) Data Base Script: Pequeño script con la creación de la tabla
 database_script.sql
+
+# SWAGGER
+
+Para ver la Documentación de la Api con Swagger, una vez esta corriendo el test:
+
+```
+http://localhost:8080/swagger-ui/index.html
+```
