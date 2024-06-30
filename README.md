@@ -1,1 +1,49 @@
-Spring Boot Test
+# Test Api Restful Client
+
+Requisitos: 
+- Java 22
+
+
+Descargar el proyecto desde el Repositorio Publico:
+```
+https://github.com/moracool/SpringBoot-test
+```
+
+# 1) Hacer el Deplay desde el Jar
+
+El archivo jar ejecutable se encuentra disponible en la carpeta Target.
+
+Ejecutar desde la consola en el proyecto dentro de la carpeta Target:
+
+```
+java -jar springboot-client-0.0.1-SNAPSHOT
+```
+
+# 2) Otra forma es abrirlo desde el Visual Studio Code u otro IDE que tengamos configurado para manejar Java
+
+**Importante:** 
+
+Configurar variable de entorno para que apunte a la versión de Java:
+
+```
+export JAVA_HOME=/directorio/jdk
+```
+
+
+# PRUEBAS
+
+Para Realizar las pruebas del Api RestFul,  debe hacerse: 
+1) importarse al Postamn el collection
+2) Iniciar el Test el deploy/Run
+3) Realizar las pruebas GET,POST,PUT,DEL incluidad en el collection
+
+# DOCUMENTACIÓN 
+
+La documentación solicitada se encuentra dentro de la carpeta /DOCS
+
+1) Modelo Entidad Relación del Test: Model databases ER.pdf
+
+2) Postman Collectión usado para todo el desarrollo : API_CLIENT_JAVA.postman_collection
+
+3) Data Base Script: Pequeño script con la creación de la tabla
+database_script.sql
