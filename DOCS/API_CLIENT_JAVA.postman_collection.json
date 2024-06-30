@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "0bb6560b-d7d1-42d0-a4cd-0ee86227516e",
+		"name": "API_CLIENT_JAVA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3503480"
+	},
+	"item": [
+		{
+			"name": "ClientInput",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"name\":\"Juan Rodriguez\",\r\n   \"email\":\"mareeeia@rodriguez.org\",\r\n   \"password\":\"Clave2024.\",\r\n   \"phones\":[\r\n      {\r\n         \"number\":\"1234567\",\r\n         \"citycode\":\"1\",\r\n         \"contrycode\":\"57\"\r\n      },\r\n       {\r\n         \"number\":\"55555\",\r\n         \"citycode\":\"1\",\r\n         \"contrycode\":\"57\"\r\n      }\r\n   ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"name\":\"Juan Rodriguez 22222222\",\r\n   \"email\":\"mareeeia@rodriguez.org\",\r\n   \"password\":\"Clave2024.\",\r\n   \"phones\":[     \r\n       {\r\n         \"number\":\"555509095\",\r\n         \"citycode\":\"1\",\r\n         \"contrycode\":\"57\"\r\n      },\r\n      {\r\n         \"number\":\"555509095\",\r\n         \"citycode\":\"1\",\r\n         \"contrycode\":\"57\"\r\n      },\r\n      {\r\n         \"number\":\"555509095\",\r\n         \"citycode\":\"1\",\r\n         \"contrycode\":\"57\"\r\n      },\r\n      {\r\n         \"number\":\"555509095\",\r\n         \"citycode\":\"1\",\r\n         \"contrycode\":\"57\"\r\n      }\r\n   ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/af324dd8-39e1-491f-827f-be0777cc613f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"af324dd8-39e1-491f-827f-be0777cc613f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/027103ea-613a-436d-b0fa-4b6d2ea44bd4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"027103ea-613a-436d-b0fa-4b6d2ea44bd4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "del",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/4bfd0826-d26e-4237-934c-208bde5253fc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"4bfd0826-d26e-4237-934c-208bde5253fc"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -65,7 +65,7 @@ public class ClientInputServiceImpl implements ClientInputService {
         loginData.setIsactive(true);
         String token = jwtService.generateToken(saveClient);
         loginData.setToken_acces(token) ; //jwtService.generateToken(saveClient));
-        
+        loginData.setToken_generation_time(LocalDateTime.now());        
         //System.out.println(token);
         serviceClientLogin.save(loginData);
         
@@ -116,8 +116,6 @@ public class ClientInputServiceImpl implements ClientInputService {
         if(clientCurrent.isPresent()){
             Client c = clientCurrent.orElseThrow();
             return  Optional.of(getClientDtoCliet(c)); 
-        }else{
-            System.out.println("NO VIENE");
         }
         return Optional.empty();
     }
@@ -176,7 +174,7 @@ public class ClientInputServiceImpl implements ClientInputService {
         return clientCurrent;     
     }
 
-    
+
     @Transactional (readOnly = true)
     @Override
     public boolean existsByEmail (String email){

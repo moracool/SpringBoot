@@ -55,6 +55,12 @@ public class Client {
         phone = new ArrayList<>();
     }
 
+    public Client(String name, String email) {
+        this.phone = new ArrayList<>();
+        this.name = name;
+        this.email = email;
+    }
+
     public UUID getId() {
         return id;
     }

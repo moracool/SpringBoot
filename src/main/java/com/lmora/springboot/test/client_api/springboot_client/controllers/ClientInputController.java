@@ -97,8 +97,7 @@ public class ClientInputController {
     
     private ResponseEntity<?> validation(BindingResult result) {
         Map<String, String> erros = new HashMap<>();
-        List<String> errores = new ArrayList<String>();
-        System.out.println("AQUI");
+        List<String> errores = new ArrayList<String>();        
         result.getFieldErrors().forEach(err -> {
             //erros.put(err.getField(), "El campo "+ err.getField() +" " + err.getDefaultMessage());
             errores.add("El campo "+ err.getField() +" " + err.getDefaultMessage());
