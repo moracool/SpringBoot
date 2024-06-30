@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lmora.springboot.test.client_api.springboot_client.entities.Client;
 import com.lmora.springboot.test.client_api.springboot_client.models.ClientInput;
 import com.lmora.springboot.test.client_api.springboot_client.models.dto.ClientDto;
+import com.lmora.springboot.test.client_api.springboot_client.models.dto.ErrorResponseDTO;
 import com.lmora.springboot.test.client_api.springboot_client.services.ClientInputService;
 
 import jakarta.validation.Valid;
@@ -34,6 +35,8 @@ public class ClientInputController {
     @Autowired
     private ClientInputService service;
 
+    private ErrorResponseDTO errorDTO = new ErrorResponseDTO();
+
     @GetMapping("/{id}")
     public ResponseEntity<?> get(@PathVariable UUID id){
         Optional<ClientDto> clientCurrent = service.findById(id);  
@@ -41,7 +44,9 @@ public class ClientInputController {
         if(clientCurrent.isPresent()){
             return ResponseEntity.ok( clientCurrent.orElseThrow());
         }
-        return  ResponseEntity.notFound().build();        
+        //return  ResponseEntity.notFound().build();        
+        errorDTO.setError("Usuario no Encontrado");     
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorDTO.getError());
     }
 
     @GetMapping("/list")
@@ -54,6 +59,11 @@ public class ClientInputController {
         if (result.hasFieldErrors()){
             return validation(result);
         }
+        if (service.existsByEmail(client.getEmail()) ) {
+            //Personal Note: I tried to do it with Custom @Annotation on the entity but I can't catch the error in the put request
+            errorDTO.setError("El correo ya registrado");     
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorDTO.getError());
+        }
         return ResponseEntity.status(HttpStatus.CREATED).body( service.save(client));
        
     }
@@ -64,27 +74,31 @@ public class ClientInputController {
             return validation(result);
         }
         Optional<ClientDto> clientOptional = service.update(id,client);
-        if (clientOptional.isPresent()){
+        if ( (clientOptional != null) && (clientOptional.isPresent() ) ){
             return ResponseEntity.status(HttpStatus.CREATED).body(clientOptional.orElseThrow());
         }
-        return  ResponseEntity.notFound().build();       
+        //return  ResponseEntity.notFound().build();       
+        errorDTO.setError("Usuario no Encontrado");     
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorDTO.getError());
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable UUID id){
-      
+        
         Optional<Client> clientCurrent = service.delete(id);        
-        if(clientCurrent.isPresent()){
+        if ( (clientCurrent != null) && clientCurrent.isPresent()){
             return ResponseEntity.ok( clientCurrent.orElseThrow());
         }
-        return  ResponseEntity.notFound().build();        
+        //return  ResponseEntity.notFound().build();   
+        errorDTO.setError("Usuario no Encontrado");     
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorDTO.getError());
     }
 
     
     private ResponseEntity<?> validation(BindingResult result) {
         Map<String, String> erros = new HashMap<>();
         List<String> errores = new ArrayList<String>();
-
+        System.out.println("AQUI");
         result.getFieldErrors().forEach(err -> {
             //erros.put(err.getField(), "El campo "+ err.getField() +" " + err.getDefaultMessage());
             errores.add("El campo "+ err.getField() +" " + err.getDefaultMessage());

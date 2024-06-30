@@ -127,33 +127,33 @@ public class ClientInputServiceImpl implements ClientInputService {
     public Optional<ClientDto> update(UUID id, ClientInput client) {
         Optional<Client> clientCurrent = serviceClient.findById(id);                
         if (clientCurrent.isPresent()) {
-            Client newClient = clientCurrent.orElseThrow();
+            Client clientUpdate = clientCurrent.orElseThrow();
 
             //Client Data Update
-            newClient.setName(client.getName());
-            newClient.setEmail(client.getEmail());   
+            clientUpdate.setName(client.getName());
+            clientUpdate.setEmail(client.getEmail());   
 
-            List<Phone>  phonesCurrent = new ArrayList<>();
-        
+            clientUpdate.getPhones().clear();
+
+            List<Phone>  phonesCurrent = new ArrayList<>();            
             //set Client Phones
             client.getPhones().forEach(p-> {
                 Phone ph = new Phone(p.getNumber(), p.getCitycode(),p.getContrycode());
                 phonesCurrent.add(ph);             
             });
-
-            newClient.setPhones(phonesCurrent);
-            serviceClient.save(newClient);
-
+            
+            clientUpdate.getPhones().addAll(phonesCurrent);            
+            serviceClient.save(clientUpdate);
             //Client Login Data Update
-            ClientLogin loginData = serviceClientLogin.findByClientId(newClient.getId());
+            ClientLogin loginData = serviceClientLogin.findByClientId(clientUpdate.getId());
                      
             loginData.setPassword_hash(passwordEncoder.encode(client.getPassword()));
-            loginData.setToken_acces(jwtService.generateToken(newClient)) ;             
+            loginData.setToken_acces(jwtService.generateToken(clientUpdate)) ;             
             
             serviceClientLogin.save(loginData);
             
             //set the response with only the required data - DTO
-            ClientDto clientRespose = getClientDtoCliet(newClient);
+            ClientDto clientRespose = getClientDtoCliet(clientUpdate);
 
             return Optional.of(clientRespose);      
         }
@@ -174,6 +174,13 @@ public class ClientInputServiceImpl implements ClientInputService {
         });
         
         return clientCurrent;     
+    }
+
+    
+    @Transactional (readOnly = true)
+    @Override
+    public boolean existsByEmail (String email){
+        return serviceClient.existsByEmail(email);
     }
 
 }

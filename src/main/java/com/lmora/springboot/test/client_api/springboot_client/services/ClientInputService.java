@@ -20,4 +20,6 @@ public interface ClientInputService {
     Optional<ClientDto> update (UUID id, ClientInput client);
     
     Optional<Client> delete (UUID id);
+
+    boolean existsByEmail(String email);
 }

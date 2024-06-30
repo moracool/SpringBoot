@@ -8,4 +8,6 @@ import com.lmora.springboot.test.client_api.springboot_client.entities.Phone;
 
 public interface PhoneRepository extends CrudRepository<Phone , UUID> {
 
+      
 }
+

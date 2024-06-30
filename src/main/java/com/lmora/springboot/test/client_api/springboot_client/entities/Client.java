@@ -34,11 +34,11 @@ public class Client {
 
     //@NotEmpty
     //@Pattern(regexp = "^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" , message = "${config.data.client.passwors.regexp}") //debe tener un formato valido example@dominio.cl")
-    //@IsExistsDB
+    //@IsExistsDB  
     private String email;   
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name="client_id")
+    @JoinColumn(name="client_id")    
     private List<Phone> phone;
     
     //private Date createdAt;
