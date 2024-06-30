@@ -37,6 +37,14 @@ public class ClientInput {
         phones = new ArrayList<>();
     }
 
+    public ClientInput(@NotEmpty @Size(min = 3, max = 45) String name,
+            @NotEmpty @Pattern(regexp = "^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$", message = "debe tener un formato valido example@dominio.cl") String email,
+            @NotEmpty String password) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
+
     public String getName() {
         return name;
     }

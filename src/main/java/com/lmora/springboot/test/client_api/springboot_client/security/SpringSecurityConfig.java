@@ -23,7 +23,7 @@ public class SpringSecurityConfig {
         return http.authorizeHttpRequests( (authz) -> authz
         .requestMatchers("/api","/api/*","/swagger-ui.html",
                     "/swagger-ui/*",
-                    "/api-docs/**",
+                    "/api-docs/**","/v3/api-docs/**",
                     "/swagger-resources/**").permitAll()
         .anyRequest().authenticated())
         .csrf(config -> config.disable())

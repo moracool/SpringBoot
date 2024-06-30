@@ -59,6 +59,18 @@ public class ClientLogin {
         this.isactive = isactive;
     }
 
+    public ClientLogin(Client client, String password_hash, String token_acces, LocalDateTime token_generation_time,
+            boolean isactive, LocalDateTime last_login, LocalDateTime createdAt, LocalDateTime modifiedAt) {
+        this.client = client;
+        this.password_hash = password_hash;
+        this.token_acces = token_acces;
+        this.token_generation_time = token_generation_time;
+        this.isactive = isactive;
+        this.last_login = last_login;
+        this.createdAt = createdAt;
+        this.modifiedAt = modifiedAt;
+    }
+
     public ClientLogin(String login_name, String password_hash, String password_salt,
             String token_acces, LocalDateTime token_generation_time, boolean isactive, LocalDateTime createdAt,
             LocalDateTime modifiedAt) {

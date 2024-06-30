@@ -1,5 +1,7 @@
 package com.lmora.springboot.test.client_api.springboot_client.respositories;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,4 +61,34 @@ public class ClientRepositoryTest {
         System.out.println(clients.toString());
 
     } 
+
+    @Test
+    public void existsByEmailFound(){
+
+        System.out.println("Test Entity - existsByEmail");
+
+        String email = "test2@gmail.com";
+        
+        boolean exist = clientRepository.existsByEmail(email);
+
+        assertEquals(true, exist);
+
+        System.out.println("User mail: "+ email+ "  Exist? R=" + exist);
+
+    } 
+    @Test
+    public void existsByEmailNotFound(){
+
+        String email = "lmora@gmail.com";
+
+        System.out.println("Test Entity - existsByEmail");
+
+        boolean exist = clientRepository.existsByEmail(email);
+
+        assertEquals(false, exist);
+
+        System.out.println("User mail: "+ email+ "  Exist? R=" + exist);
+
+    } 
+
 }

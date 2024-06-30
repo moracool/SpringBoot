@@ -26,10 +26,13 @@ import com.lmora.springboot.test.client_api.springboot_client.models.dto.ClientD
 import com.lmora.springboot.test.client_api.springboot_client.models.dto.ErrorResponseDTO;
 import com.lmora.springboot.test.client_api.springboot_client.services.ClientInputService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api")
+@Tag(name= "ClientInput")
 public class ClientInputController {
 
     @Autowired
@@ -38,6 +41,7 @@ public class ClientInputController {
     private ErrorResponseDTO errorDTO = new ErrorResponseDTO();
 
     @GetMapping("/{id}")
+    @Operation(summary = "Get a Specific Client from DataBase")
     public ResponseEntity<?> get(@PathVariable UUID id){
         Optional<ClientDto> clientCurrent = service.findById(id);  
         
@@ -50,11 +54,13 @@ public class ClientInputController {
     }
 
     @GetMapping("/list")
+    @Operation(summary = "Get a List of Client from DataBase")
     public List<ClientDto> list(){       
         return service.findAll();
     }
     
     @PostMapping
+    @Operation(summary = "Save a Client in DataBase and return Data User Login")
     public ResponseEntity<?> create (@Valid @RequestBody ClientInput client, BindingResult result){
         if (result.hasFieldErrors()){
             return validation(result);
@@ -69,6 +75,7 @@ public class ClientInputController {
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Update a Client in DataBase and return Data User Login")
     public ResponseEntity<?> update (@Valid @RequestBody ClientInput client, BindingResult result, @PathVariable UUID id){
         if (result.hasFieldErrors()){
             return validation(result);
@@ -83,6 +90,7 @@ public class ClientInputController {
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Delete a Client in DataBase and return the Last Data User Login")
     public ResponseEntity<?> delete(@PathVariable UUID id){
         
         Optional<Client> clientCurrent = service.delete(id);        
