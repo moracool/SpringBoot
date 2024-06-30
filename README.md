@@ -32,7 +32,9 @@ export JAVA_HOME=/directorio/jdk
 
 Para Realizar las pruebas del Api RestFul,  debe hacerse: 
 1) Importar al Postamn el collection del proyecto que se encuentra en /DOCS
+   
 2) Iniciar el Deploy/Run del proyecto (ApiResful)
+   
 3) Realizar las pruebas GET, POST, PUT, DEL incluidad en el collection
 
 # DOCUMENTACIÓN 
