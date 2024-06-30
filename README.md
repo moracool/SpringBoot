@@ -11,9 +11,9 @@ https://github.com/moracool/SpringBoot-test
 
 # 1) Hacer el Deplay desde el Jar
 
-El archivo jar ejecutable se encuentra disponible en la carpeta Target.
+El archivo Jar ejecutable se encuentra disponible en la carpeta Target
 
-Ejecutar desde la consola en el proyecto dentro de la carpeta Target:
+Ejecutar desde la consola, en el proyecto dentro de la carpeta Target:
 
 ```
 java -jar springboot-client-0.0.1-SNAPSHOT
@@ -33,9 +33,9 @@ export JAVA_HOME=/directorio/jdk
 # PRUEBAS
 
 Para Realizar las pruebas del Api RestFul,  debe hacerse: 
-1) importarse al Postamn el collection
-2) Iniciar el Test el deploy/Run
-3) Realizar las pruebas GET,POST,PUT,DEL incluidad en el collection
+1) Importar al Postamn el collection del proyecto que se encuentra en /DOCS
+2) Iniciar el Deploy/Run del proyecto (ApiResful)
+3) Realizar las pruebas GET, POST, PUT, DEL incluidad en el collection
 
 # DOCUMENTACIÓN 
 
