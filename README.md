@@ -11,9 +11,7 @@ https://github.com/moracool/SpringBoot-test
 
 # 1) Hacer el Deplay desde el Jar
 
-El archivo Jar ejecutable se encuentra disponible en la carpeta Target
-
-Ejecutar desde la consola, en el proyecto dentro de la carpeta Target:
+El archivo Jar ejecutable se encuentra disponible en la carpeta Target dentro del proyecto, ejecutar desde la consola:
 
 ```
 java -jar springboot-client-0.0.1-SNAPSHOT
